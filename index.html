@@ -4,15 +4,578 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOUSE OF PAWS - Rescuing Dogs, Restoring Hope</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff6b6b;
+      --secondary: #4ecdc4;
+      --dark: #292f36;
+      --light: #f7fff7;
+      --accent: #ff9f1c;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+    
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      position: relative;
+    }
+    
+    header h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+    
+    header p {
+      color: var(--dark);
+      font-size: 0.9rem;
+    }
+    
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      width: 30px;
+      height: 20px;
+      position: relative;
+      z-index: 1001;
+    }
+    
+    .hamburger span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+    }
+    
+    .hamburger span:nth-child(1) {
+      top: 0px;
+    }
+    
+    .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+      top: 10px;
+    }
+    
+    .hamburger span:nth-child(4) {
+      top: 20px;
+    }
+    
+    .hamburger.open span:nth-child(1) {
+      top: 10px;
+      width: 0%;
+      left: 50%;
+    }
+    
+    .hamburger.open span:nth-child(2) {
+      transform: rotate(45deg);
+    }
+    
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+    
+    .hamburger.open span:nth-child(4) {
+      top: 10px;
+      width: 0%;
+      left: 50%;
+    }
+    
+    /* Navigation */
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    
+    nav a:hover {
+      color: var(--primary);
+      background-color: rgba(255, 107, 107, 0.1);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1583511655826-05700442b31b') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 180px 0 100px;
+      margin-top: 80px;
+    }
+    
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      animation: fadeInUp 1s ease 0.3s forwards;
+      opacity: 0;
+    }
+    
+    /* Button Styles */
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid var(--primary);
+      animation: fadeInUp 1s ease 0.6s forwards;
+      opacity: 0;
+    }
+    
+    .btn:hover {
+      background-color: transparent;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      border-color: white;
+    }
+    
+    .btn-secondary:hover {
+      background-color: white;
+      color: var(--primary);
+    }
+    
+    /* Stats Section */
+    .stats {
+      background-color: var(--secondary);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+    
+    .stats .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    
+    .stat-item {
+      padding: 20px;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .stat-item h3 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    /* 3D Gallery Section */
+    .gallery-section {
+      padding: 80px 0;
+      background-color: white;
+      text-align: center;
+    }
+    
+    .gallery-section h2 {
+      margin-bottom: 50px;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .gallery-section h2::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background-color: var(--primary);
+      bottom: -10px;
+      left: 25%;
+    }
+    
+    .gallery-container {
+      perspective: 1000px;
+      height: 400px;
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    .gallery-carousel {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      animation: rotate 30s infinite linear;
+    }
+    
+    .gallery-carousel:hover {
+      animation-play-state: paused;
+    }
+    
+    .gallery-item {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      left: 50px;
+      top: 50px;
+      border: 5px solid white;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      transition: all 0.5s ease;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    /* Donate Section */
+    .donate {
+      background-color: var(--light);
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .donate h2 {
+      margin-bottom: 40px;
+      color: var(--dark);
+    }
+    
+    .donation-options {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    
+    .option {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      width: 200px;
+    }
+    
+    .option:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .option h3 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    
+    .progress-bar {
+      background-color: #e0e0e0;
+      height: 10px;
+      border-radius: 5px;
+      margin: 30px auto;
+      max-width: 600px;
+      overflow: hidden;
+    }
+    
+    .progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      width: 50%;
+      transition: width 1s ease;
+    }
+    
+    .progress-text {
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    /* Success Stories */
+    .stories {
+      padding: 80px 0;
+      background-color: white;
+      text-align: center;
+    }
+    
+    .stories h2 {
+      margin-bottom: 50px;
+      color: var(--dark);
+    }
+    
+    .story-carousel {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      padding: 20px 0;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .story {
+      flex: 0 0 300px;
+      scroll-snap-align: start;
+      background-color: var(--light);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .story:hover {
+      transform: translateY(-10px);
+    }
+    
+    .story img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .story h3 {
+      color: var(--primary);
+      margin: 15px 0;
+    }
+    
+    .story p {
+      padding: 0 20px 20px;
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1583337130417-3346a1be7dee') no-repeat center center/cover;
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+    
+    .testimonials h2 {
+      margin-bottom: 50px;
+    }
+    
+    .testimonial {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+    
+    .donor-name {
+      font-style: normal;
+      font-weight: 600;
+      margin-top: 15px;
+      color: var(--secondary);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+    
+    footer p {
+      margin-bottom: 20px;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes rotate {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+    
+    /* Position items in 3D space */
+    .gallery-item:nth-child(1) { transform: rotateY(0deg) translateZ(300px); }
+    .gallery-item:nth-child(2) { transform: rotateY(60deg) translateZ(300px); }
+    .gallery-item:nth-child(3) { transform: rotateY(120deg) translateZ(300px); }
+    .gallery-item:nth-child(4) { transform: rotateY(180deg) translateZ(300px); }
+    .gallery-item:nth-child(5) { transform: rotateY(240deg) translateZ(300px); }
+    .gallery-item:nth-child(6) { transform: rotateY(300deg) translateZ(300px); }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      }
+      
+      nav.active {
+        right: 0;
+      }
+      
+      nav a {
+        padding: 15px 0;
+        font-size: 1.2rem;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .stats .container {
+        flex-direction: column;
+      }
+      
+      .stat-item {
+        margin-bottom: 20px;
+      }
+      
+      .gallery-container {
+        height: 300px;
+      }
+      
+      .gallery-item {
+        width: 200px;
+        height: 200px;
+        left: 50px;
+        top: 50px;
+      }
+      
+      /* Adjust 3D positions for mobile */
+      .gallery-item:nth-child(1) { transform: rotateY(0deg) translateZ(200px); }
+      .gallery-item:nth-child(2) { transform: rotateY(60deg) translateZ(200px); }
+      .gallery-item:nth-child(3) { transform: rotateY(120deg) translateZ(200px); }
+      .gallery-item:nth-child(4) { transform: rotateY(180deg) translateZ(200px); }
+      .gallery-item:nth-child(5) { transform: rotateY(240deg) translateZ(200px); }
+      .gallery-item:nth-child(6) { transform: rotateY(300deg) translateZ(200px); }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
-  <header>
+  <header id="header">
     <div class="container">
-      <h1>HOUSE OF PAWS</h1>
-      <p>Rescuing Dogs, Restoring Hope</p>
+      <div class="logo-container">
+        <h1>HOUSE OF PAWS</h1>
+        <p>Rescuing Dogs, Restoring Hope</p>
+      </div>
       <!-- Hamburger Menu Icon -->
       <div class="hamburger" id="hamburger">
         <span></span>
@@ -26,6 +589,7 @@
         <a href="mission.html">Our Mission</a>
         <a href="get-involved.html">Get Involved</a>
         <a href="contact.html">Contact Us</a>
+        <a href="#donate" class="btn">Donate Now</a>
       </nav>
     </div>
   </header>
@@ -35,7 +599,10 @@
     <div class="container">
       <h2>Every Paw Deserves a Second Chance</h2>
       <p>Your donation can save a life. Together, we can give abandoned and abused dogs the love and care they deserve.</p>
-      <a href="#donate" class="btn">Donate Now</a>
+      <div class="hero-buttons">
+        <a href="#donate" class="btn">Donate Now</a>
+        <a href="#gallery" class="btn btn-secondary">Meet Our Dogs</a>
+      </div>
     </div>
   </section>
 
@@ -48,12 +615,42 @@
       </div>
       <div class="stat-item">
         <h3>$50,000</h3>
-        <p>Raised</p>
+        <p>Raised This Year</p>
       </div>
       <div class="stat-item">
         <h3>300+</h3>
-        <p>Lives Changed</p>
+        <p>Happy Adoptions</p>
       </div>
+    </div>
+  </section>
+
+  <!-- 3D Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <h2>Our Happy Residents</h2>
+      <div class="gallery-container">
+        <div class="gallery-carousel">
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80" alt="Rescued dog 1">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d" alt="Rescued dog 2">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b" alt="Rescued dog 3">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6" alt="Rescued dog 4">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1505628346881-b72b27e84530" alt="Rescued dog 5">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1544568100-847a948585b9" alt="Rescued dog 6">
+          </div>
+        </div>
+      </div>
+      <p style="margin-top: 30px;">Hover to pause the carousel and meet our wonderful dogs waiting for their forever homes.</p>
     </div>
   </section>
 
@@ -61,27 +658,43 @@
   <section id="donate" class="donate">
     <div class="container">
       <h2>Your Donation Makes a Difference</h2>
+      <p class="subheading">Choose how you'd like to help:</p>
+      
       <div class="donation-options">
         <div class="option">
           <h3>$25</h3>
           <p>Feeds a dog for a week</p>
+          <i class="fas fa-bowl-food" style="font-size: 2rem; color: var(--accent); margin: 15px 0;"></i>
         </div>
         <div class="option">
           <h3>$50</h3>
           <p>Covers basic medical care</p>
+          <i class="fas fa-heartbeat" style="font-size: 2rem; color: var(--accent); margin: 15px 0;"></i>
         </div>
         <div class="option">
           <h3>$100</h3>
           <p>Funds a rescue operation</p>
+          <i class="fas fa-heart" style="font-size: 2rem; color: var(--accent); margin: 15px 0;"></i>
         </div>
       </div>
-      <div class="progress-bar">
-        <div class="progress" style="width: 50%;"></div>
+      
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress" style="width: 50%;"></div>
+        </div>
+        <p class="progress-text">$50,000 raised of $100,000 goal</p>
       </div>
-      <p class="progress-text">$50,000 raised of $100,000 goal</p>
+      
       <div class="payment-methods">
-        <a href="https://www.paypal.com/donate" class="btn">Donate via PayPal</a>
-        <a href="#crypto" class="btn">Donate via Crypto</a>
+        <a href="https://www.paypal.com/donate" class="btn" style="background-color: #003087;">
+          <i class="fab fa-paypal"></i> Donate via PayPal
+        </a>
+        <a href="#crypto" class="btn" style="background-color: #8247e5;">
+          <i class="fab fa-bitcoin"></i> Donate via Crypto
+        </a>
+        <a href="#" class="btn" style="background-color: var(--dark);">
+          <i class="fas fa-credit-card"></i> Credit Card
+        </a>
       </div>
     </div>
   </section>
@@ -90,16 +703,26 @@
   <section class="stories">
     <div class="container">
       <h2>Success Stories</h2>
+      <p class="subheading">Read how we've transformed lives, one paw at a time</p>
+      
       <div class="story-carousel">
         <div class="story">
-          <img src="20.jpg" alt="Max's Story">
+          <img src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80" alt="Max's Story">
           <h3>Max's Story</h3>
-          <p>From abandoned to adored. Max found his forever home thanks to your support.</p>
+          <p>Found malnourished and scared, Max is now the happiest pup with his new family in Seattle.</p>
+          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin: 15px 0;">Read Full Story</a>
         </div>
         <div class="story">
-          <img src="24.jpg" alt="Luna's Journey">
+          <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b" alt="Luna's Journey">
           <h3>Luna's Journey</h3>
-          <p>A puppy given a second chance. Luna is now thriving in her new family.</p>
+          <p>Abandoned in a parking lot, Luna now brings joy to a family with three loving children.</p>
+          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin: 15px 0;">Read Full Story</a>
+        </div>
+        <div class="story">
+          <img src="https://images.unsplash.com/photo-1505628346881-b72b27e84530" alt="Rocky's Recovery">
+          <h3>Rocky's Recovery</h3>
+          <p>Severely injured when we found him, Rocky made a full recovery and found his forever home.</p>
+          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin: 15px 0;">Read Full Story</a>
         </div>
       </div>
     </div>
@@ -108,14 +731,29 @@
   <!-- Testimonials -->
   <section class="testimonials">
     <div class="container">
-      <h2>What Our Donors Say</h2>
+      <h2>What Our Supporters Say</h2>
+      <p class="subheading" style="color: rgba(255,255,255,0.8); margin-bottom: 40px;">Hear from those who've made a difference</p>
+      
       <div class="testimonial">
-        <p>"I love supporting HOUSE OF PAWS because I know my donation is making a real difference."</p>
-        <p class="donor-name">– Sarah T.</p>
+        <p>"I've been donating to HOUSE OF PAWS for 3 years now. Seeing the direct impact of my contributions through their transparent updates keeps me coming back."</p>
+        <p class="donor-name">– Sarah T., Monthly Donor</p>
       </div>
       <div class="testimonial">
-        <p>"Seeing the transformation of these dogs is so rewarding. I'm proud to be a donor."</p>
-        <p class="donor-name">– John D.</p>
+        <p>"After adopting Buddy from HOUSE OF PAWS, I knew I had to give back. Now I volunteer every weekend and it's the highlight of my week!"</p>
+        <p class="donor-name">– Michael R., Volunteer & Adopter</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta" style="background-color: var(--primary); padding: 60px 0; text-align: center; color: white;">
+    <div class="container">
+      <h2 style="margin-bottom: 20px;">Ready to Make a Difference?</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Join our community of dog lovers and help us save more lives every day.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <a href="#donate" class="btn" style="background-color: white; color: var(--primary);">Donate Now</a>
+        <a href="get-involved.html" class="btn btn-secondary">Volunteer</a>
+        <a href="contact.html" class="btn btn-secondary">Contact Us</a>
       </div>
     </div>
   </section>
@@ -123,15 +761,97 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 HOUSE OF PAWS. All rights reserved.</p>
-      <div class="social-links">
-        <a href="https://facebook.com/houseofpaws">Facebook</a>
-        <a href="https://instagram.com/houseofpaws">Instagram</a>
-        <a href="https://twitter.com/houseofpaws">Twitter</a>
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 30px; text-align: left;">
+        <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+          <h3 style="color: var(--primary); margin-bottom: 15px;">HOUSE OF PAWS</h3>
+          <p>Rescuing Dogs, Restoring Hope since 2015</p>
+        </div>
+        <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+          <h4 style="margin-bottom: 15px;">Quick Links</h4>
+          <ul style="list-style: none;">
+            <li style="margin-bottom: 8px;"><a href="about.html" style="color: white; text-decoration: none;">About Us</a></li>
+            <li style="margin-bottom: 8px;"><a href="mission.html" style="color: white; text-decoration: none;">Our Mission</a></li>
+            <li style="margin-bottom: 8px;"><a href="get-involved.html" style="color: white; text-decoration: none;">Get Involved</a></li>
+            <li style="margin-bottom: 8px;"><a href="contact.html" style="color: white; text-decoration: none;">Contact</a></li>
+          </ul>
+        </div>
+        <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+          <h4 style="margin-bottom: 15px;">Contact Info</h4>
+          <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Rescue Ave, Dogtown</p>
+          <p><i class="fas fa-phone" style="margin-right: 10px;"></i> (555) 123-4567</p>
+          <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@houseofpaws.org</p>
+        </div>
       </div>
+      
+      <div class="social-links">
+        <a href="https://facebook.com/houseofpaws"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/houseofpaws"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/houseofpaws"><i class="fab fa-twitter"></i></a>
+        <a href="https://youtube.com/houseofpaws"><i class="fab fa-youtube"></i></a>
+      </div>
+      
+      <p style="margin-top: 30px;">&copy; 2025 HOUSE OF PAWS. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="scripts.js"></script>
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking a link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('active');
+      });
+    });
+    
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Animate progress bar on scroll into view
+    const progressBar = document.querySelector('.progress');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          progressBar.style.width = '50%';
+        }
+      });
+    }, {threshold: 0.5});
+    
+    observer.observe(document.querySelector('.donate'));
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
