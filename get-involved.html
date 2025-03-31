@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - HOUSE OF PAWS | Rescuing Dogs, Restoring Hope</title>
+  <title>Get Involved - HOUSE OF PAWS | Rescuing Dogs, Restoring Hope</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Consistent CSS from About page */
+    /* Same CSS as About page - ensure consistency */
     :root {
       --primary: #ff6b6b;
       --secondary: #4ecdc4;
@@ -244,8 +244,8 @@
       text-align: center;
     }
     
-    /* Contact Methods */
-    .contact-methods {
+    /* Values Grid */
+    .values-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
@@ -253,7 +253,7 @@
       margin: 0 auto;
     }
     
-    .contact-card {
+    .value-card {
       background-color: white;
       padding: 30px;
       border-radius: 10px;
@@ -262,18 +262,33 @@
       text-align: center;
     }
     
-    .contact-card:hover {
+    .value-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
     
-    .contact-card i {
+    .value-card i {
       font-size: 2.5rem;
       color: var(--primary);
       margin-bottom: 20px;
     }
     
-    /* Contact Form */
+    /* Two Column Layout */
+    .two-column {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 40px 0;
+    }
+    
+    .column {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+    }
+    
+    /* Forms */
     .form-container {
       max-width: 600px;
       margin: 0 auto;
@@ -304,64 +319,49 @@
       height: 150px;
     }
     
-    /* Location Section */
-    .location-section {
+    /* Impact Stats */
+    .impact-stats {
       display: flex;
-      gap: 40px;
+      justify-content: space-around;
       flex-wrap: wrap;
-      justify-content: center;
+      background-color: var(--light);
+      padding: 30px 0;
+      border-radius: 10px;
       margin: 40px 0;
     }
     
-    .location-card {
+    .stat-item {
+      text-align: center;
+      padding: 20px;
       flex: 1;
-      min-width: 300px;
-      max-width: 500px;
-      background-color: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      min-width: 200px;
     }
     
-    .location-card h3 {
+    .stat-item h3 {
       color: var(--primary);
-      margin-bottom: 15px;
-    }
-    
-    .map-placeholder {
-      height: 250px;
-      background-color: #eee;
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    
-    /* FAQ Section */
-    .faq-section {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .faq-item {
-      margin-bottom: 20px;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-      padding-bottom: 20px;
-    }
-    
-    .faq-item h3 {
-      color: var(--primary);
+      font-size: 2.5rem;
       margin-bottom: 10px;
     }
     
-    /* Emergency Banner */
-    .emergency-banner {
-      background-color: #ff3a3a;
-      color: white;
+    /* Testimonial */
+    .testimonial {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       text-align: center;
-      padding: 20px 0;
-      margin-top: 40px;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--primary);
     }
     
     /* Footer */
@@ -475,11 +475,11 @@
         font-size: 1rem;
       }
       
-      .location-section {
+      .two-column {
         flex-direction: column;
       }
       
-      .location-card {
+      .column {
         max-width: 100%;
       }
     }
@@ -502,8 +502,8 @@
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
         <a href="mission.html">Our Mission</a>
-        <a href="get-involved.html">Get Involved</a>
-        <a href="contact.html" class="active">Contact Us</a>
+        <a href="get-involved.html" class="active">Get Involved</a>
+        <a href="contact.html">Contact Us</a>
         <a href="#donate" class="btn">Donate Now</a>
       </nav>
     </div>
@@ -512,165 +512,367 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <h2>We're Here to Help</h2>
-      <p>Have questions or want to learn more about our work? Reach out to our team - we'd love to hear from you.</p>
+      <h2>Join Our Pack</h2>
+      <p>Discover meaningful ways to support our mission and transform the lives of rescue dogs</p>
       <div class="hero-buttons">
-        <a href="#contact-form" class="btn">Send a Message</a>
-        <a href="#locations" class="btn btn-secondary">Visit Us</a>
+        <a href="#volunteer" class="btn">Volunteer</a>
+        <a href="#foster" class="btn btn-secondary">Foster</a>
+        <a href="#donate" class="btn btn-secondary">Donate</a>
       </div>
     </div>
   </section>
 
-  <!-- Contact Methods -->
-  <section class="content-section" style="background-color: white;">
+  <!-- Volunteer Section -->
+  <section id="volunteer" class="content-section" style="background-color: white;">
     <div class="container">
-      <h2 class="section-title">How to Reach Us</h2>
-      <p class="section-description">Choose the most convenient way to get in touch with our team</p>
+      <h2 class="section-title">Volunteer Opportunities</h2>
+      <p class="section-description">Our volunteers are the backbone of HOUSE OF PAWS. Whether you have a few hours a month or can make a regular commitment, your time and skills can make a life-changing difference for our rescue dogs.</p>
       
-      <div class="contact-methods">
-        <div class="contact-card">
-          <i class="fas fa-phone-alt"></i>
-          <h3>By Phone</h3>
-          <p><strong>Main Line:</strong> (555) 123-4567</p>
-          <p><strong>Adoptions:</strong> (555) 123-4568</p>
-          <p><strong>Hours:</strong> Mon-Fri 9am-5pm</p>
-          <a href="tel:5551234567" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Call Now</a>
+      <div class="values-grid">
+        <div class="value-card">
+          <i class="fas fa-paw"></i>
+          <h3>Dog Care</h3>
+          <p>Provide hands-on care including walking, feeding, grooming, and socializing our rescue dogs. Comprehensive training provided.</p>
+          <div class="impact-stats">
+            <div class="stat-item">
+              <h3>4+</h3>
+              <p>Hours/week</p>
+            </div>
+            <div class="stat-item">
+              <h3>50+</h3>
+              <p>Active volunteers</p>
+            </div>
+          </div>
+          <a href="#volunteer-form" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Apply Now</a>
         </div>
         
-        <div class="contact-card">
-          <i class="fas fa-envelope"></i>
-          <h3>By Email</h3>
-          <p><strong>General Inquiries:</strong> info@houseofpaws.org</p>
-          <p><strong>Adoptions:</strong> adopt@houseofpaws.org</p>
-          <p><strong>Volunteers:</strong> volunteer@houseofpaws.org</p>
-          <a href="mailto:info@houseofpaws.org" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Email Us</a>
+        <div class="value-card">
+          <i class="fas fa-calendar-check"></i>
+          <h3>Events Team</h3>
+          <p>Help with adoption events, fundraisers, and community outreach programs. Roles include setup, guest coordination, and education.</p>
+          <div class="impact-stats">
+            <div class="stat-item">
+              <h3>12+</h3>
+              <p>Events/year</p>
+            </div>
+            <div class="stat-item">
+              <h3>200+</h3>
+              <p>Attendees/event</p>
+            </div>
+          </div>
+          <a href="#volunteer-form" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Apply Now</a>
         </div>
         
-        <div class="contact-card">
-          <i class="fas fa-map-marker-alt"></i>
-          <h3>In Person</h3>
-          <p><strong>Main Facility:</strong> 123 Rescue Ave, Dogtown</p>
-          <p><strong>Adoption Center:</strong> 456 Paws Boulevard</p>
-          <p><strong>Hours:</strong> Daily 11am-7pm</p>
-          <a href="#locations" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">View Map</a>
+        <div class="value-card">
+          <i class="fas fa-hands-helping"></i>
+          <h3>Support Roles</h3>
+          <p>Assist with administrative tasks, photography, transportation, or facility maintenance. We'll match your skills with our needs.</p>
+          <div class="impact-stats">
+            <div class="stat-item">
+              <h3>2+</h3>
+              <p>Hours/week</p>
+            </div>
+            <div class="stat-item">
+              <h3>10+</h3>
+              <p>Roles available</p>
+            </div>
+          </div>
+          <a href="#volunteer-form" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Apply Now</a>
+        </div>
+      </div>
+      
+      <div class="testimonial">
+        <p class="testimonial-text">"Volunteering at HOUSE OF PAWS has been one of the most rewarding experiences of my life. Seeing these dogs transform and find loving homes makes every hour worthwhile."</p>
+        <p class="testimonial-author">- Sarah M., Volunteer since 2019</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Foster Section -->
+  <section id="foster" class="content-section" style="background-color: var(--light);">
+    <div class="container">
+      <h2 class="section-title">Foster a Dog</h2>
+      <p class="section-description">Fostering is one of the most rewarding ways to help. Provide temporary love and care for dogs awaiting their forever families while we cover all expenses.</p>
+      
+      <div class="two-column">
+        <div class="column">
+          <h3 style="color: var(--primary); margin-bottom: 20px;">Why Foster?</h3>
+          <div style="background-color: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%;">
+            <ul style="margin-left: 20px;">
+              <li style="margin-bottom: 15px;"><strong>Saves lives</strong> by freeing up space for more rescues</li>
+              <li style="margin-bottom: 15px;"><strong>Prepares dogs</strong> for success in their forever homes</li>
+              <li style="margin-bottom: 15px;"><strong>Provides insights</strong> about the dog's personality and needs</li>
+              <li style="margin-bottom: 15px;"><strong>Socializes dogs</strong> in a real home environment</li>
+              <li><strong>We provide</strong> all food, supplies, medical care, and support</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="column">
+          <h3 style="color: var(--primary); margin-bottom: 20px;">Foster Requirements</h3>
+          <div style="background-color: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%;">
+            <ul style="margin-left: 20px;">
+              <li style="margin-bottom: 15px;">Safe, clean home (renters welcome with landlord approval)</li>
+              <li style="margin-bottom: 15px;">Time to provide care, attention, and basic training</li>
+              <li style="margin-bottom: 15px;">Ability to transport to vet appointments as needed</li>
+              <li style="margin-bottom: 15px;">Patience and understanding of rescue dogs' needs</li>
+              <li>Completion of our foster orientation program</li>
+            </ul>
+            <a href="#foster-form" class="btn" style="display: inline-block; margin-top: 20px;">Apply to Foster</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="impact-stats">
+        <div class="stat-item">
+          <h3>150+</h3>
+          <p>Dogs fostered annually</p>
+        </div>
+        <div class="stat-item">
+          <h3>95%</h3>
+          <p>Adoption success rate</p>
+        </div>
+        <div class="stat-item">
+          <h3>30+</h3>
+          <p>Active foster families</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Form -->
-  <section id="contact-form" class="content-section" style="background-color: var(--light);">
+  <!-- Donate Section -->
+  <section id="donate" class="content-section" style="background-color: white;">
     <div class="container">
-      <h2 class="section-title">Send Us a Message</h2>
-      <p class="section-description">Fill out this form and we'll respond within 24-48 hours</p>
+      <h2 class="section-title">Financial Support</h2>
+      <p class="section-description">Your donations directly fund rescue operations, medical care, and rehabilitation programs. Every dollar makes a difference.</p>
+      
+      <div class="two-column">
+        <div class="column">
+          <h3 style="color: var(--primary); margin-bottom: 20px;">Ways to Give</h3>
+          <div style="background-color: var(--light); padding: 25px; border-radius: 10px; height: 100%;">
+            <div style="margin-bottom: 25px;">
+              <h4 style="margin-bottom: 10px; color: var(--dark);">One-Time Donation</h4>
+              <p>Make an immediate impact with a single gift. Perfect for supporters who want to help with current needs.</p>
+            </div>
+            
+            <div style="margin-bottom: 25px;">
+              <h4 style="margin-bottom: 10px; color: var(--dark);">Monthly Giving</h4>
+              <p>Provide sustained support through automatic monthly donations. Our most impactful way to give.</p>
+            </div>
+            
+            <div style="margin-bottom: 25px;">
+              <h4 style="margin-bottom: 10px; color: var(--dark);">Sponsor a Dog</h4>
+              <p>Fully fund the care of a specific dog throughout their rehabilitation and adoption journey.</p>
+            </div>
+            
+            <div>
+              <h4 style="margin-bottom: 10px; color: var(--dark);">Corporate Matching</h4>
+              <p>Many employers will match your donation, doubling your impact. Ask your HR department about matching gift programs.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="column">
+          <h3 style="color: var(--primary); margin-bottom: 20px;">Your Impact</h3>
+          <div style="background-color: var(--light); padding: 25px; border-radius: 10px; height: 100%;">
+            <div style="display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.1);">
+              <div style="width: 60px; height: 60px; background-color: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; font-size: 1.2rem;">$25</div>
+              <span>Provides vaccinations for one dog</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.1);">
+              <div style="width: 60px; height: 60px; background-color: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; font-size: 1.2rem;">$50</div>
+              <span>Covers a wellness exam and basic medications</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.1);">
+              <div style="width: 60px; height: 60px; background-color: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; font-size: 1.2rem;">$100</div>
+              <span>Funds spay/neuter surgery for one dog</span>
+            </div>
+            
+            <div style="display: flex; align-items: center;">
+              <div style="width: 60px; height: 60px; background-color: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; font-size: 1.2rem;">$500</div>
+              <span>Supports an emergency rescue operation</span>
+            </div>
+            
+            <a href="#donate-now" class="btn" style="display: block; margin-top: 30px; text-align: center;">Donate Now</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="impact-stats">
+        <div class="stat-item">
+          <h3>$50,000+</h3>
+          <p>Raised annually</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>Goes directly to programs</p>
+        </div>
+        <div class="stat-item">
+          <h3>500+</h3>
+          <p>Donors each year</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Ways to Help -->
+  <section class="content-section" style="background-color: var(--primary); color: white;">
+    <div class="container">
+      <h2 class="section-title" style="color: white;">More Ways to Help</h2>
+      <p class="section-description">Even if you can't volunteer or foster, there are still many meaningful ways to support our mission.</p>
+      
+      <div class="values-grid">
+        <div class="value-card" style="background-color: rgba(255,255,255,0.1); color: white;">
+          <i class="fas fa-shopping-cart"></i>
+          <h3>Wish List</h3>
+          <p>Donate supplies from our Amazon Wish List or drop off items at our facility. We always need food, toys, cleaning supplies, and bedding.</p>
+          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px; background-color: white; color: var(--primary);">View Wish List</a>
+        </div>
+        
+        <div class="value-card" style="background-color: rgba(255,255,255,0.1); color: white;">
+          <i class="fas fa-share-alt"></i>
+          <h3>Spread the Word</h3>
+          <p>Follow us on social media, share our posts, and tell friends about our work. Awareness leads to more adoptions and support.</p>
+          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px; background-color: white; color: var(--primary);">Follow Us</a>
+        </div>
+        
+        <div class="value-card" style="background-color: rgba(255,255,255,0.1); color: white;">
+          <i class="fas fa-hand-holding-heart"></i>
+          <h3>Fundraise</h3>
+          <p>Host a birthday fundraiser, organize a donation drive at your workplace, or create a community event to benefit our dogs.</p>
+          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px; background-color: white; color: var(--primary);">Get Fundraising Kit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer Application Form -->
+  <section id="volunteer-form" class="content-section" style="background-color: white;">
+    <div class="container">
+      <h2 class="section-title">Volunteer Application</h2>
+      <p class="section-description">Ready to join our team? Please complete this form and we'll contact you within 3 business days.</p>
       
       <div class="form-container">
-        <form id="contactForm">
+        <form id="volunteerApplication">
           <div class="form-group">
-            <label for="contact-name">Your Name</label>
-            <input type="text" id="contact-name" required>
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" required>
           </div>
           
           <div class="form-group">
-            <label for="contact-email">Email Address</label>
-            <input type="email" id="contact-email" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
           </div>
           
           <div class="form-group">
-            <label for="contact-phone">Phone Number</label>
-            <input type="tel" id="contact-phone">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone">
           </div>
           
           <div class="form-group">
-            <label for="contact-subject">Subject</label>
-            <select id="contact-subject" required>
-              <option value="">Select a subject</option>
-              <option value="general">General Inquiry</option>
-              <option value="adoption">Adoption Question</option>
-              <option value="volunteer">Volunteering</option>
-              <option value="donation">Donation Question</option>
-              <option value="report">Report Animal in Need</option>
+            <label for="interest">Area of Interest</label>
+            <select id="interest" required>
+              <option value="">Select an option</option>
+              <option value="dog-care">Dog Care</option>
+              <option value="events">Events</option>
+              <option value="admin">Administrative</option>
+              <option value="transport">Transportation</option>
               <option value="other">Other</option>
             </select>
           </div>
           
           <div class="form-group">
-            <label for="contact-message">Your Message</label>
-            <textarea id="contact-message" required></textarea>
+            <label for="availability">Availability</label>
+            <textarea id="availability" placeholder="Please describe your typical availability (days/times)"></textarea>
           </div>
           
-          <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+          <div class="form-group">
+            <label for="experience">Relevant Experience</label>
+            <textarea id="experience" placeholder="Tell us about any experience with animals, volunteering, or relevant skills"></textarea>
+          </div>
+          
+          <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- Locations Section -->
-  <section id="locations" class="content-section" style="background-color: white;">
+  <!-- Foster Application Form -->
+  <section id="foster-form" class="content-section" style="background-color: var(--light);">
     <div class="container">
-      <h2 class="section-title">Our Locations</h2>
-      <p class="section-description">Visit us at one of our facilities</p>
+      <h2 class="section-title">Foster Application</h2>
+      <p class="section-description">Thank you for your interest in fostering! Please complete this form to begin the process.</p>
       
-      <div class="location-section">
-        <div class="location-card">
-          <h3>Main Rescue Facility</h3>
-          <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--secondary);"></i> 123 Rescue Ave, Dogtown</p>
-          <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--secondary);"></i> (555) 123-4567</p>
-          <p><i class="fas fa-clock" style="margin-right: 10px; color: var(--secondary);"></i> Mon-Fri: 9am-5pm</p>
-          <div class="map-placeholder">
-            <p>Map would display here</p>
+      <div class="form-container">
+        <form id="fosterApplication">
+          <div class="form-group">
+            <label for="foster-name">Full Name</label>
+            <input type="text" id="foster-name" required>
           </div>
-          <a href="#" class="btn" style="display: inline-block; margin-top: 15px;">Get Directions</a>
-        </div>
-        
-        <div class="location-card">
-          <h3>Adoption Center</h3>
-          <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--secondary);"></i> 456 Paws Boulevard, Dogtown</p>
-          <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--secondary);"></i> (555) 987-6543</p>
-          <p><i class="fas fa-clock" style="margin-right: 10px; color: var(--secondary);"></i> Daily: 11am-7pm</p>
-          <div class="map-placeholder">
-            <p>Map would display here</p>
+          
+          <div class="form-group">
+            <label for="foster-email">Email</label>
+            <input type="email" id="foster-email" required>
           </div>
-          <a href="#" class="btn" style="display: inline-block; margin-top: 15px;">Get Directions</a>
-        </div>
+          
+          <div class="form-group">
+            <label for="foster-phone">Phone</label>
+            <input type="tel" id="foster-phone" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="address">Full Address</label>
+            <input type="text" id="address" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="housing">Housing Type</label>
+            <select id="housing" required>
+              <option value="">Select an option</option>
+              <option value="own">Own my home</option>
+              <option value="rent">Rent</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="landlord">If renting, does your landlord allow pets?</label>
+            <select id="landlord">
+              <option value="">Select an option</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="unsure">Unsure</option>
+              <option value="na">Not applicable</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="household">Tell us about your household</label>
+            <textarea id="household" required placeholder="Who lives in your home? Any other pets?"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="preferences">Foster Preferences</label>
+            <textarea id="preferences" placeholder="Do you have preferences about size, age, or temperament?"></textarea>
+          </div>
+          
+          <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
+        </form>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="content-section" style="background-color: var(--light);">
+  <!-- Donation CTA -->
+  <section id="donate-now" class="content-section" style="background-color: var(--secondary); color: white; text-align: center;">
     <div class="container">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      
-      <div class="faq-section">
-        <div class="faq-item">
-          <h3>How do I adopt a dog from HOUSE OF PAWS?</h3>
-          <p>Our adoption process begins with completing an application, followed by a meet-and-greet, home visit, and adoption contract. Visit our adoption center or check our website for available dogs. The entire process typically takes 3-7 days.</p>
-        </div>
-        
-        <div class="faq-item">
-          <h3>What should I do if I find a stray dog?</h3>
-          <p>If the dog appears friendly, check for ID tags. You can contact local shelters or our emergency line. If the dog seems injured or aggressive, contact animal control for assistance. Never approach an unknown dog if you feel unsafe.</p>
-        </div>
-        
-        <div class="faq-item">
-          <h3>Do you accept owner surrenders?</h3>
-          <p>Yes, by appointment only. We ask owners to complete a surrender form and provide any medical records. There may be a surrender fee to help cover care costs. We encourage owners to explore all alternatives before surrendering.</p>
-        </div>
-        
-        <div class="faq-item">
-          <h3>Can I specify how my donation is used?</h3>
-          <p>Absolutely! You can designate your gift for medical care, facility upkeep, or a specific program. Unrestricted donations allow us to allocate funds where most needed. All donations are tax-deductible.</p>
-        </div>
+      <h2 class="section-title" style="color: white;">Ready to Make a Difference?</h2>
+      <p class="section-description">Your support helps us rescue, rehabilitate, and rehome dogs in need.</p>
+      <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+        <a href="#" class="btn" style="background-color: white; color: var(--secondary);">Donate Online</a>
+        <a href="contact.html" class="btn btn-secondary">Other Ways to Give</a>
       </div>
-    </div>
-  </section>
-
-  <!-- Emergency Banner -->
-  <section class="emergency-banner">
-    <div class="container">
-      <h3><i class="fas fa-exclamation-triangle" style="margin-right: 10px;"></i> Animal Emergency?</h3>
-      <p>For after-hours emergencies involving injured or abused animals, please call our emergency line: <strong>(555) 911-PAWS</strong></p>
     </div>
   </section>
 
@@ -758,9 +960,15 @@
     });
     
     // Form submission handling
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('volunteerApplication').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you for your message! We will respond within 24-48 hours.');
+      alert('Thank you for your volunteer application! We will contact you within 3 business days.');
+      this.reset();
+    });
+    
+    document.getElementById('fosterApplication').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your foster application! Our foster coordinator will contact you soon.');
       this.reset();
     });
   </script>
