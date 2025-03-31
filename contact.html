@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - HOUSE OF PAWS | Rescuing Dogs, Restoring Hope</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Consistent CSS from About page */
+    :root {
+      --primary: #ff6b6b;
+      --secondary: #4ecdc4;
+      --dark: #292f36;
+      --light: #f7fff7;
+      --accent: #ff9f1c;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+    
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      position: relative;
+    }
+    
+    header h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+    
+    header p {
+      color: var(--dark);
+      font-size: 0.9rem;
+    }
+    
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      width: 30px;
+      height: 20px;
+      position: relative;
+      z-index: 1001;
+    }
+    
+    .hamburger span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: var(--primary);
+      border-radius: 3px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+    }
+    
+    .hamburger span:nth-child(1) {
+      top: 0px;
+    }
+    
+    .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+      top: 10px;
+    }
+    
+    .hamburger span:nth-child(4) {
+      top: 20px;
+    }
+    
+    .hamburger.open span:nth-child(1) {
+      top: 10px;
+      width: 0%;
+      left: 50%;
+    }
+    
+    .hamburger.open span:nth-child(2) {
+      transform: rotate(45deg);
+    }
+    
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+    
+    .hamburger.open span:nth-child(4) {
+      top: 10px;
+      width: 0%;
+      left: 50%;
+    }
+    
+    /* Navigation */
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    
+    nav a:hover {
+      color: var(--primary);
+      background-color: rgba(255, 107, 107, 0.1);
+    }
+    
+    nav a.active {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1583511655826-05700442b31b') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 180px 0 100px;
+      margin-top: 80px;
+    }
+    
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      animation: fadeInUp 1s ease 0.3s forwards;
+      opacity: 0;
+    }
+    
+    /* Button Styles */
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid var(--primary);
+      animation: fadeInUp 1s ease 0.6s forwards;
+      opacity: 0;
+    }
+    
+    .btn:hover {
+      background-color: transparent;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      border-color: white;
+    }
+    
+    .btn-secondary:hover {
+      background-color: white;
+      color: var(--primary);
+    }
+    
+    /* Content Sections */
+    .content-section {
+      padding: 80px 0;
+    }
+    
+    .section-title {
+      color: var(--primary);
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section-description {
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    
+    /* Contact Methods */
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .contact-card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .contact-card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    /* Contact Form */
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px 0;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    .form-group textarea {
+      height: 150px;
+    }
+    
+    /* Location Section */
+    .location-section {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 40px 0;
+    }
+    
+    .location-card {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .location-card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .map-placeholder {
+      height: 250px;
+      background-color: #eee;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    /* FAQ Section */
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding-bottom: 20px;
+    }
+    
+    .faq-item h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    /* Emergency Banner */
+    .emergency-banner {
+      background-color: #ff3a3a;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-column h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column li {
+      margin-bottom: 8px;
+    }
+    
+    .footer-column a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-column a:hover {
+      color: var(--secondary);
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      }
+      
+      nav.active {
+        right: 0;
+      }
+      
+      nav a {
+        padding: 15px 0;
+        font-size: 1.2rem;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .location-section {
+        flex-direction: column;
+      }
+      
+      .location-card {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <div class="logo-container">
+        <h1>HOUSE OF PAWS</h1>
+        <p>Rescuing Dogs, Restoring Hope</p>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="mission.html">Our Mission</a>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="contact.html" class="active">Contact Us</a>
+        <a href="#donate" class="btn">Donate Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h2>We're Here to Help</h2>
+      <p>Have questions or want to learn more about our work? Reach out to our team - we'd love to hear from you.</p>
+      <div class="hero-buttons">
+        <a href="#contact-form" class="btn">Send a Message</a>
+        <a href="#locations" class="btn btn-secondary">Visit Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="content-section" style="background-color: white;">
+    <div class="container">
+      <h2 class="section-title">How to Reach Us</h2>
+      <p class="section-description">Choose the most convenient way to get in touch with our team</p>
+      
+      <div class="contact-methods">
+        <div class="contact-card">
+          <i class="fas fa-phone-alt"></i>
+          <h3>By Phone</h3>
+          <p><strong>Main Line:</strong> (555) 123-4567</p>
+          <p><strong>Adoptions:</strong> (555) 123-4568</p>
+          <p><strong>Hours:</strong> Mon-Fri 9am-5pm</p>
+          <a href="tel:5551234567" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Call Now</a>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h3>By Email</h3>
+          <p><strong>General Inquiries:</strong> info@houseofpaws.org</p>
+          <p><strong>Adoptions:</strong> adopt@houseofpaws.org</p>
+          <p><strong>Volunteers:</strong> volunteer@houseofpaws.org</p>
+          <a href="mailto:info@houseofpaws.org" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">Email Us</a>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>In Person</h3>
+          <p><strong>Main Facility:</strong> 123 Rescue Ave, Dogtown</p>
+          <p><strong>Adoption Center:</strong> 456 Paws Boulevard</p>
+          <p><strong>Hours:</strong> Daily 11am-7pm</p>
+          <a href="#locations" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">View Map</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact-form" class="content-section" style="background-color: var(--light);">
+    <div class="container">
+      <h2 class="section-title">Send Us a Message</h2>
+      <p class="section-description">Fill out this form and we'll respond within 24-48 hours</p>
+      
+      <div class="form-container">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="contact-phone">Phone Number</label>
+            <input type="tel" id="contact-phone">
+          </div>
+          
+          <div class="form-group">
+            <label for="contact-subject">Subject</label>
+            <select id="contact-subject" required>
+              <option value="">Select a subject</option>
+              <option value="general">General Inquiry</option>
+              <option value="adoption">Adoption Question</option>
+              <option value="volunteer">Volunteering</option>
+              <option value="donation">Donation Question</option>
+              <option value="report">Report Animal in Need</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="contact-message">Your Message</label>
+            <textarea id="contact-message" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Locations Section -->
+  <section id="locations" class="content-section" style="background-color: white;">
+    <div class="container">
+      <h2 class="section-title">Our Locations</h2>
+      <p class="section-description">Visit us at one of our facilities</p>
+      
+      <div class="location-section">
+        <div class="location-card">
+          <h3>Main Rescue Facility</h3>
+          <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--secondary);"></i> 123 Rescue Ave, Dogtown</p>
+          <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--secondary);"></i> (555) 123-4567</p>
+          <p><i class="fas fa-clock" style="margin-right: 10px; color: var(--secondary);"></i> Mon-Fri: 9am-5pm</p>
+          <div class="map-placeholder">
+            <p>Map would display here</p>
+          </div>
+          <a href="#" class="btn" style="display: inline-block; margin-top: 15px;">Get Directions</a>
+        </div>
+        
+        <div class="location-card">
+          <h3>Adoption Center</h3>
+          <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--secondary);"></i> 456 Paws Boulevard, Dogtown</p>
+          <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--secondary);"></i> (555) 987-6543</p>
+          <p><i class="fas fa-clock" style="margin-right: 10px; color: var(--secondary);"></i> Daily: 11am-7pm</p>
+          <div class="map-placeholder">
+            <p>Map would display here</p>
+          </div>
+          <a href="#" class="btn" style="display: inline-block; margin-top: 15px;">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="content-section" style="background-color: var(--light);">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      
+      <div class="faq-section">
+        <div class="faq-item">
+          <h3>How do I adopt a dog from HOUSE OF PAWS?</h3>
+          <p>Our adoption process begins with completing an application, followed by a meet-and-greet, home visit, and adoption contract. Visit our adoption center or check our website for available dogs. The entire process typically takes 3-7 days.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>What should I do if I find a stray dog?</h3>
+          <p>If the dog appears friendly, check for ID tags. You can contact local shelters or our emergency line. If the dog seems injured or aggressive, contact animal control for assistance. Never approach an unknown dog if you feel unsafe.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>Do you accept owner surrenders?</h3>
+          <p>Yes, by appointment only. We ask owners to complete a surrender form and provide any medical records. There may be a surrender fee to help cover care costs. We encourage owners to explore all alternatives before surrendering.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>Can I specify how my donation is used?</h3>
+          <p>Absolutely! You can designate your gift for medical care, facility upkeep, or a specific program. Unrestricted donations allow us to allocate funds where most needed. All donations are tax-deductible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Banner -->
+  <section class="emergency-banner">
+    <div class="container">
+      <h3><i class="fas fa-exclamation-triangle" style="margin-right: 10px;"></i> Animal Emergency?</h3>
+      <p>For after-hours emergencies involving injured or abused animals, please call our emergency line: <strong>(555) 911-PAWS</strong></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>HOUSE OF PAWS</h3>
+          <p>Rescuing Dogs, Restoring Hope since 2015</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="mission.html">Our Mission</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Rescue Ave, Dogtown</p>
+          <p><i class="fas fa-phone" style="margin-right: 10px;"></i> (555) 123-4567</p>
+          <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@houseofpaws.org</p>
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://facebook.com/houseofpaws"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/houseofpaws"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/houseofpaws"><i class="fab fa-twitter"></i></a>
+        <a href="https://youtube.com/houseofpaws"><i class="fab fa-youtube"></i></a>
+      </div>
+      
+      <p style="margin-top: 30px;">&copy; 2025 HOUSE OF PAWS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking a link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('active');
+      });
+    });
+    
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Form submission handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will respond within 24-48 hours.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
