@@ -328,11 +328,17 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: transform 0.3s ease;
       width: 200px;
+      cursor: pointer;
     }
     
     .option:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .option.selected {
+      border: 2px solid var(--primary);
+      background-color: rgba(255, 107, 107, 0.1);
     }
     
     .option h3 {
@@ -341,25 +347,29 @@
       margin-bottom: 10px;
     }
     
+    .progress-container {
+      margin: 40px auto;
+      max-width: 800px;
+    }
+    
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
     .progress-bar {
       background-color: #e0e0e0;
       height: 10px;
       border-radius: 5px;
-      margin: 30px auto;
-      max-width: 600px;
       overflow: hidden;
     }
     
     .progress {
       height: 100%;
       background: linear-gradient(90deg, var(--primary), var(--secondary));
-      width: 5%;
+      width: 1.25%;
       transition: width 1s ease;
-    }
-    
-    .progress-text {
-      margin-bottom: 30px;
-      font-weight: 600;
     }
     
     .payment-methods {
@@ -367,6 +377,118 @@
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    
+    /* Donation Form */
+    .donation-form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      max-width: 500px;
+      margin: 30px auto;
+      display: none;
+    }
+    
+    .donation-form.active {
+      display: block;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    
+    /* Crypto Donation Section */
+    .crypto-donation {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      max-width: 500px;
+      margin: 30px auto;
+      display: none;
+    }
+    
+    .crypto-donation.active {
+      display: block;
+    }
+    
+    .crypto-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .crypto-option {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .crypto-option:hover {
+      border-color: var(--primary);
+    }
+    
+    .crypto-option.selected {
+      border-color: var(--primary);
+      background-color: rgba(255, 107, 107, 0.1);
+    }
+    
+    .crypto-option img {
+      width: 30px;
+      height: 30px;
+      margin-right: 15px;
+    }
+    
+    .crypto-address {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      word-break: break-all;
+      display: none;
+    }
+    
+    .crypto-address.active {
+      display: block;
+    }
+    
+    .copy-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      display: inline-block;
     }
     
     /* Success Stories */
@@ -473,6 +595,39 @@
       color: var(--primary);
     }
     
+    /* Footer Grid */
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-column a:hover {
+      color: var(--secondary);
+    }
+    
     /* Animations */
     @keyframes fadeInUp {
       from {
@@ -531,6 +686,10 @@
         font-size: 1.2rem;
       }
       
+      .hero {
+        padding: 150px 0 80px;
+      }
+      
       .hero h2 {
         font-size: 2rem;
       }
@@ -565,6 +724,64 @@
       .gallery-item:nth-child(4) { transform: rotateY(180deg) translateZ(200px); }
       .gallery-item:nth-child(5) { transform: rotateY(240deg) translateZ(200px); }
       .gallery-item:nth-child(6) { transform: rotateY(300deg) translateZ(200px); }
+      
+      .payment-methods {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .donation-options {
+        gap: 15px;
+      }
+      
+      .option {
+        width: 160px;
+        padding: 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero {
+        padding: 120px 0 60px;
+      }
+      
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      
+      .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .stat-item h3 {
+        font-size: 2rem;
+      }
+      
+      .gallery-container {
+        height: 250px;
+      }
+      
+      .gallery-item {
+        width: 150px;
+        height: 150px;
+        left: 50px;
+        top: 50px;
+      }
+      
+      /* Adjust 3D positions for small mobile */
+      .gallery-item:nth-child(1) { transform: rotateY(0deg) translateZ(150px); }
+      .gallery-item:nth-child(2) { transform: rotateY(60deg) translateZ(150px); }
+      .gallery-item:nth-child(3) { transform: rotateY(120deg) translateZ(150px); }
+      .gallery-item:nth-child(4) { transform: rotateY(180deg) translateZ(150px); }
+      .gallery-item:nth-child(5) { transform: rotateY(240deg) translateZ(150px); }
+      .gallery-item:nth-child(6) { transform: rotateY(300deg) translateZ(150px); }
     }
   </style>
 </head>
@@ -661,38 +878,128 @@
       <p class="subheading">Choose how you'd like to help:</p>
       
       <div class="donation-options">
-        <div class="option">
+        <div class="option" data-amount="25">
           <h3>$25</h3>
           <p>Feeds a dog for a week</p>
           <i class="fas fa-bowl-food" style="font-size: 2rem; color: var(--accent); margin: 15px 0;"></i>
         </div>
-        <div class="option">
+        <div class="option" data-amount="50">
           <h3>$50</h3>
           <p>Covers basic medical care</p>
           <i class="fas fa-heartbeat" style="font-size: 2rem; color: var(--accent); margin: 15px 0;"></i>
         </div>
-        <div class="option">
+        <div class="option" data-amount="100">
           <h3>$100</h3>
           <p>Funds a rescue operation</p>
           <i class="fas fa-heart" style="font-size: 2rem; color: var(--accent); margin: 15px 0;"></i>
         </div>
+        <div class="option" data-amount="custom">
+          <h3>Custom</h3>
+          <p>Any amount you choose</p>
+          <i class="fas fa-hand-holding-heart" style="font-size: 2rem; color: var(--accent); margin: 15px 0;"></i>
+        </div>
       </div>
       
       <div class="progress-container">
-        <div class="progress-bar">
-          <div class="progress" style="width: 50%;"></div>
+        <div class="progress-info">
+          <span>Raised: $<span id="raised-amount">1,251</span></span>
+          <span>Goal: $100,000</span>
         </div>
-        <p class="progress-text">$1,251 raised of $100,000 goal</p>
+        <div class="progress-bar">
+          <div class="progress" id="progress-bar" style="width: 1.25%;"></div>
+        </div>
+        <div class="progress-controls" style="margin-top: 15px;">
+          <button id="update-progress" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Update Progress</button>
+          <input type="number" id="new-amount" placeholder="New amount" style="padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-left: 10px; width: 100px;">
+        </div>
+      </div>
+      
+      <!-- Donation Form -->
+      <div class="donation-form" id="credit-card-form">
+        <h3>Credit Card Donation</h3>
+        <form id="donation-form">
+          <div class="form-group">
+            <label for="amount">Donation Amount ($)</label>
+            <input type="number" id="amount" name="amount" min="5" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="card">Card Number</label>
+            <input type="text" id="card" name="card" required>
+          </div>
+          <div class="form-group" style="display: flex; gap: 15px;">
+            <div style="flex: 1;">
+              <label for="expiry">Expiry Date</label>
+              <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+            </div>
+            <div style="flex: 1;">
+              <label for="cvc">CVC</label>
+              <input type="text" id="cvc" name="cvc" required>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn" style="background-color: var(--dark);" id="cancel-donation">Cancel</button>
+            <button type="submit" class="btn">Donate Now</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Crypto Donation Section -->
+      <div class="crypto-donation" id="crypto-donation">
+        <h3>Crypto Donation</h3>
+        <p>Select your preferred cryptocurrency:</p>
+        
+        <div class="crypto-options">
+          <div class="crypto-option" data-crypto="bitcoin">
+            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">
+            <span>Bitcoin (BTC)</span>
+          </div>
+          <div class="crypto-option" data-crypto="ethereum">
+            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">
+            <span>Ethereum (ETH)</span>
+          </div>
+          <div class="crypto-option" data-crypto="usdt">
+            <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="Tether">
+            <span>Tether (USDT)</span>
+          </div>
+        </div>
+        
+        <div class="crypto-address" id="bitcoin-address">
+          <p>Send Bitcoin to this address:</p>
+          <p><strong>bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</strong></p>
+          <button class="copy-btn" data-address="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh">Copy Address</button>
+        </div>
+        
+        <div class="crypto-address" id="ethereum-address">
+          <p>Send Ethereum to this address:</p>
+          <p><strong>0x71C7656EC7ab88b098defB751B7401B5f6d8976F</strong></p>
+          <button class="copy-btn" data-address="0x71C7656EC7ab88b098defB751B7401B5f6d8976F">Copy Address</button>
+        </div>
+        
+        <div class="crypto-address" id="usdt-address">
+          <p>Send USDT (ERC-20) to this address:</p>
+          <p><strong>0x71C7656EC7ab88b098defB751B7401B5f6d8976F</strong></p>
+          <button class="copy-btn" data-address="0x71C7656EC7ab88b098defB751B7401B5f6d8976F">Copy Address</button>
+        </div>
+        
+        <button type="button" class="btn" style="background-color: var(--dark); margin-top: 20px;" id="cancel-crypto">Back to Options</button>
       </div>
       
       <div class="payment-methods">
         <a href="https://www.paypal.com/donate" class="btn" style="background-color: #003087;">
           <i class="fab fa-paypal"></i> Donate via PayPal
         </a>
-        <a href="#crypto" class="btn" style="background-color: #8247e5;">
+        <a href="#" class="btn" id="crypto-btn" style="background-color: #8247e5;">
           <i class="fab fa-bitcoin"></i> Donate via Crypto
         </a>
-        <a href="#" class="btn" style="background-color: var(--dark);">
+        <a href="#" class="btn" id="credit-card-btn" style="background-color: var(--dark);">
           <i class="fas fa-credit-card"></i> Credit Card
         </a>
       </div>
@@ -761,33 +1068,33 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 30px; text-align: left;">
-        <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-          <h3 style="color: var(--primary); margin-bottom: 15px;">HOUSE OF PAWS</h3>
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>HOUSE OF PAWS</h4>
           <p>Rescuing Dogs, Restoring Hope since 2019</p>
-        <Div>
-        <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-          <h4 style="margin-bottom: 15px;">Quick Links</h4>
-          <ul style="list-style: none;">
-            <li style="margin-bottom: 8px;"><a href="about.html" style="color: white; text-decoration: none;">About Us</a></li>
-            <li style="margin-bottom: 8px;"><a href="mission.html" style="color: white; text-decoration: none;">Our Mission</a></li>
-            <li style="margin-bottom: 8px;"><a href="get-involved.html" style="color: white; text-decoration: none;">Get Involved</a></li>
-            <li style="margin-bottom: 8px;"><a href="contact.html" style="color: white; text-decoration: none;">Contact</a></li>
+          <div class="social-links" style="justify-content: flex-start; margin-top: 15px;">
+            <a href="https://facebook.com/houseofpaws"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/houseofpaws"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/houseofpaws"><i class="fab fa-twitter"></i></a>
+            <a href="https://youtube.com/houseofpaws"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="mission.html">Our Mission</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#donate">Donate</a></li>
           </ul>
         </div>
-        <div style="flex: 1; min-width: 250px; margin-bottom: 20px;">
-          <h4 style="margin-bottom: 15px;">Contact Info</h4>
+        <div class="footer-column">
+          <h4>Contact Info</h4>
           <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Rescue Berry, from streets</p>
           <p><i class="fas fa-phone" style="margin-right: 10px;"></i> (+256) 781-915680</p>
           <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@houseofpaws.org</p>
         </div>
-      </div>
-      
-      <div class="social-links">
-        <a href="https://facebook.com/houseofpaws"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://instagram.com/houseofpaws"><i class="fab fa-instagram"></i></a>
-        <a href="https://twitter.com/houseofpaws"><i class="fab fa-twitter"></i></a>
-        <a hrD="https://youtube.com/houseofpaws"><i class="fab fa-youtube"></i></a>
       </div>
       
       <p style="margin-top: 30px;">&copy; 2025 HOUSE OF PAWS. All rights reserved.</p>
@@ -823,17 +1130,27 @@
       }
     });
     
-    // Animate progress bar on scroll into view
-    const progressBar = document.querySelector('.progress');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          progressBar.style.width = '50%';
-        }
-      });
-    }, {threshold: 0.5});
+    // Progress bar functionality
+    const progressBar = document.getElementById('progress-bar');
+    const raisedAmount = document.getElementById('raised-amount');
+    const updateProgressBtn = document.getElementById('update-progress');
+    const newAmountInput = document.getElementById('new-amount');
     
-    observer.observe(document.querySelector('.donate'));
+    // Initialize with current amount
+    let currentAmount = 1251;
+    const goalAmount = 100000;
+    
+    updateProgressBtn.addEventListener('click', () => {
+      const newAmount = parseFloat(newAmountInput.value) || 0;
+      if (newAmount > 0) {
+        currentAmount = newAmount;
+        raisedAmount.textContent = currentAmount.toLocaleString();
+        const progressPercent = (currentAmount / goalAmount) * 100;
+        progressBar.style.width = `${progressPercent}%`;
+        newAmountInput.value = '';
+        alert(`Progress updated to $${currentAmount.toLocaleString()}`);
+      }
+    });
     
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -852,6 +1169,103 @@
         }
       });
     });
+    
+    // Donation amount selection
+    const donationOptions = document.querySelectorAll('.option');
+    donationOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        donationOptions.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+        
+        if (option.dataset.amount === 'custom') {
+          document.getElementById('amount').value = '';
+          document.getElementById('amount').focus();
+        } else {
+          document.getElementById('amount').value = option.dataset.amount;
+        }
+      });
+    });
+    
+    // Payment method toggle
+    const creditCardBtn = document.getElementById('credit-card-btn');
+    const cryptoBtn = document.getElementById('crypto-btn');
+    const creditCardForm = document.getElementById('credit-card-form');
+    const cryptoDonation = document.getElementById('crypto-donation');
+    const cancelDonation = document.getElementById('cancel-donation');
+    const cancelCrypto = document.getElementById('cancel-crypto');
+    
+    creditCardBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      creditCardForm.classList.add('active');
+      cryptoDonation.classList.remove('active');
+    });
+    
+    cryptoBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      cryptoDonation.classList.add('active');
+      creditCardForm.classList.remove('active');
+    });
+    
+    cancelDonation.addEventListener('click', () => {
+      creditCardForm.classList.remove('active');
+    });
+    
+    cancelCrypto.addEventListener('click', () => {
+      cryptoDonation.classList.remove('active');
+    });
+    
+    // Crypto option selection
+    const cryptoOptions = document.querySelectorAll('.crypto-option');
+    const cryptoAddresses = document.querySelectorAll('.crypto-address');
+    
+    cryptoOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        cryptoOptions.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+        
+        cryptoAddresses.forEach(addr => addr.classList.remove('active'));
+        document.getElementById(`${option.dataset.crypto}-address`).classList.add('active');
+      });
+    });
+    
+    // Copy crypto address
+    const copyBtns = document.querySelectorAll('.copy-btn');
+    copyBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const address = btn.dataset.address;
+        navigator.clipboard.writeText(address).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => {
+            btn.textContent = 'Copy Address';
+          }, 2000);
+        });
+      });
+    });
+    
+    // Form submission
+    const donationForm = document.getElementById('donation-form');
+    donationForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const donationAmount = parseFloat(document.getElementById('amount').value) || 0;
+      
+      if (donationAmount < 5) {
+        alert('Minimum donation amount is $5');
+        return;
+      }
+      
+      alert(`Thank you for your donation of $${donationAmount}! A confirmation has been sent to your email.`);
+      donationForm.reset();
+      creditCardForm.classList.remove('active');
+      
+      // Update progress bar
+      currentAmount += donationAmount;
+      document.getElementById('raised-amount').textContent = currentAmount.toLocaleString();
+      const progressPercent = (currentAmount / goalAmount) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+    });
+    
+    // Initialize with first crypto option selected
+    cryptoOptions[0].click();
   </script>
 </body>
 </html>
