@@ -77,81 +77,59 @@
     }
     
     /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      width: 30px;
-      height: 20px;
-      position: relative;
-      z-index: 1001;
-    }
-    
-    .hamburger span {
-      display: block;
-      position: absolute;
-      height: 3px;
-      width: 100%;
-      background: var(--primary);
-      border-radius: 3px;
-      opacity: 1;
-      left: 0;
-      transform: rotate(0deg);
-      transition: .25s ease-in-out;
-    }
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      width: 30px;
-      height: 20px;
-      position: relative;
-      z-index: 1001;
-    }
-    
-    .hamburger span {
-      display: block;
-      position: absolute;
-      height: 3px;
-      width: 100%;
-      background: var(--primary);
-      border-radius: 3px;
-      opacity: 1;
-      left: 0;
-      transform: rotate(0deg);
-      transition: .25s ease-in-out;
-    }
-    
-    .hamburger span:nth-child(1) {
-      top: 0px;
-    }
-    
-    .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
-      top: 10px;
-    }
-    
-    .hamburger span:nth-child(4) {
-      top: 20px;
-    }
-    
-    .hamburger.open span:nth-child(1) {
-      top: 10px;
-      width: 0%;
-      left: 50%;
-    }
-    
-    .hamburger.open span:nth-child(2) {
-      transform: rotate(45deg);
-    }
-    
-    .hamburger.open span:nth-child(3) {
-      transform: rotate(-45deg);
-    }
-    
-    .hamburger.open span:nth-child(4) {
-      top: 10px;
-      width: 0%;
-      left: 50%;
-    }
+.hamburger {
+  display: none;
+  cursor: pointer;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+  top: 10px;
+}
+
+.hamburger span:nth-child(4) {
+  top: 20px;
+}
+
+.hamburger.open span:nth-child(1) {
+  top: 10px;
+  width: 0%;
+  left: 50%;
+}
+
+.hamburger.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.hamburger.open span:nth-child(4) {
+  top: 10px;
+  width: 0%;
+  left: 50%;
+}
 /* Navigation */
     nav {
       display: flex;
