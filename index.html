@@ -972,47 +972,59 @@
           </div>
         </form>
       </div>
-      
       <!-- Crypto Donation Section -->
-      <div class="crypto-donation" id="crypto-donation">
-        <h3>Crypto Donation</h3>
-        <p>Select your preferred cryptocurrency:</p>
-        
-        <div class="crypto-options">
-          <div class="crypto-option" data-crypto="bitcoin">
-            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">
-            <span>Bitcoin (BTC)</span>
-          </div>
-          <div class="crypto-option" data-crypto="ethereum">
-            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">
-            <span>Ethereum (ETH)</span>
-          </div>
-          <div class="crypto-option" data-crypto="usdt">
-            <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="Tether">
-            <span>Tether (USDT)</span>
-          </div>
-        </div>
-        
-        <div class="crypto-address" id="bitcoin-address">
-          <p>Send Bitcoin to this address:</p>
-          <p><strong>bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</strong></p>
-          <button class="copy-btn" data-address="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh">Copy Address</button>
-        </div>
-        
-        <div class="crypto-address" id="ethereum-address">
-          <p>Send Ethereum to this address:</p>
-          <p><strong>0x71C7656EC7ab88b098defB751B7401B5f6d8976F</strong></p>
-          <button class="copy-btn" data-address="0x71C7656EC7ab88b098defB751B7401B5f6d8976F">Copy Address</button>
-        </div>
-        
-        <div class="crypto-address" id="usdt-address">
-          <p>Send USDT (ERC-20) to this address:</p>
-          <p><strong>0x72f5d99dbc46e3df74812f0de092fe10b98ca4d1</strong></p>
-          <button class="copy-btn" data-address="0x72f5d99dbc46e3df74812f0de092fe10b98ca4d1">Copy Address</button>
-        </div>
-        
-        <button type="button" class="btn" style="background-color: var(--dark); margin-top: 20px;" id="cancel-crypto">Back to Options</button>
-      </div>
+<div class="crypto-donation" id="crypto-donation">
+  <h3>Crypto Donation</h3>
+  <p>Select your preferred cryptocurrency:</p>
+  
+  <div class="crypto-options">
+    <div class="crypto-option" data-crypto="bitcoin">
+      <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">
+      <span>Bitcoin (BTC)</span>
+    </div>
+    <div class="crypto-option" data-crypto="ethereum">
+      <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">
+      <span>Ethereum (ETH)</span>
+    </div>
+    <div class="crypto-option" data-crypto="usdt">
+      <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="Tether">
+      <span>Tether (USDT)</span>
+    </div>
+    <!-- Add more crypto options as needed -->
+  </div>
+  
+  <div class="crypto-address" id="bitcoin-address">
+    <p>Send Bitcoin to this address:</p>
+    <p><strong>bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</strong></p>
+    <button class="copy-btn" data-address="bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh">Copy Address</button>
+    <!-- Add QR code if available -->
+    <div class="qr-code" style="margin-top: 15px;">
+      <img src="path-to-your-bitcoin-qr-code.png" alt="Bitcoin QR Code" style="max-width: 150px;">
+    </div>
+  </div>
+  
+  <div class="crypto-address" id="ethereum-address">
+    <p>Send Ethereum to this address:</p>
+    <p><strong>0x71C7656EC7ab88b098defB751B7401B5f6d8976F</strong></p>
+    <button class="copy-btn" data-address="0x71C7656EC7ab88b098defB751B7401B5f6d8976F">Copy Address</button>
+    <!-- Add QR code if available -->
+    <div class="qr-code" style="margin-top: 15px;">
+      <img src="path-to-your-ethereum-qr-code.png" alt="Ethereum QR Code" style="max-width: 150px;">
+    </div>
+  </div>
+  
+  <div class="crypto-address" id="usdt-address">
+    <p>Send USDT (ERC-20) to this address:</p>
+    <p><strong>0x72f5d99dbc46e3df74812f0de092fe10b98ca4d1</strong></p>
+    <button class="copy-btn" data-address="0x72f5d99dbc46e3df74812f0de092fe10b98ca4d1">Copy Address</button>
+    <!-- Add QR code if available -->
+    <div class="qr-code" style="margin-top: 15px;">
+      <img src="path-to-your-usdt-qr-code.png" alt="USDT QR Code" style="max-width: 150px;">
+    </div>
+  </div>
+  
+  <button type="button" class="btn" style="background-color: var(--dark); margin-top: 20px;" id="cancel-crypto">Back to Options</button>
+</div>
       
       <div class="payment-methods">
         <a href="https://www.paypal.me/Saveme2667" class="btn" style="background-color: #003087;">
@@ -1306,70 +1318,63 @@ cancelCrypto.addEventListener('click', (e) => {
     
     
     
+    // Payment method toggle - Crypto Donation
+const creditCardBtn = document.getElementById('credit-card-btn');
+const cryptoBtn = document.getElementById('crypto-btn');
+const creditCardForm = document.getElementById('credit-card-form');
+const cryptoDonation = document.getElementById('crypto-donation');
+const cancelDonation = document.getElementById('cancel-donation');
+const cancelCrypto = document.getElementById('cancel-crypto');
+
+// Hide both forms initially
+creditCardForm.classList.remove('active');
+cryptoDonation.classList.remove('active');
+
+creditCardBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  creditCardForm.classList.add('active');
+  cryptoDonation.classList.remove('active');
+  // Scroll to the form
+  creditCardForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+cryptoBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  cryptoDonation.classList.add('active');
+  creditCardForm.classList.remove('active');
+  // Scroll to the crypto section
+  cryptoDonation.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+cancelDonation.addEventListener('click', (e) => {
+  e.preventDefault();
+  creditCardForm.classList.remove('active');
+});
+
+cancelCrypto.addEventListener('click', (e) => {
+  e.preventDefault();
+  cryptoDonation.classList.remove('active');
+});
+
+// Crypto option selection
+const cryptoOptions = document.querySelectorAll('.crypto-option');
+const cryptoAddresses = document.querySelectorAll('.crypto-address');
+
+cryptoOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    cryptoOptions.forEach(opt => opt.classList.remove('selected'));
+    option.classList.add('selected');
     
-    // Crypto option selection
-    const cryptoOptions = document.querySelectorAll('.crypto-option');
-    const cryptoAddresses = document.querySelectorAll('.crypto-address');
+    cryptoAddresses.forEach(addr => addr.classList.remove('active'));
+    document.getElementById(`${option.dataset.crypto}-address`).classList.add('active');
+  });
+});
+
+// Initialize with first crypto option selected
+if (cryptoOptions.length > 0) {
+  cryptoOptions[0].click();
+}
     
-    cryptoOptions.forEach(option => {
-      option.addEventListener('click', () => {
-        cryptoOptions.forEach(opt => opt.classList.remove('selected'));
-        option.classList.add('selected');
-        
-        cryptoAddresses.forEach(addr => addr.classList.remove('active'));
-        document.getElementById(`${option.dataset.crypto}-address`).classList.add('active');
-      });
-    });
-    
-    // Copy crypto address
-    const copyBtns = document.querySelectorAll('.copy-btn');
-    copyBtns.forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const address = btn.dataset.address;
-        try {
-          await navigator.clipboard.writeText(address);
-          btn.textContent = 'Copied!';
-          setTimeout(() => {
-            btn.textContent = 'Copy Address';
-          }, 2000);
-        } catch (err) {
-          console.error('Failed to copy:', err);
-          alert('Could not copy address. Please copy manually.');
-        }
-      });
-    });
-    
-    // Form submission with validation
-    const donationForm = document.getElementById('donation-form');
-    donationForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Validate form
-      const donationAmount = parseFloat(document.getElementById('amount').value) || 0;
-      const cardNumber = document.getElementById('card').value.replace(/\s/g, '');
-      const expiry = document.getElementById('expiry').value;
-      const cvc = document.getElementById('cvc').value;
-      
-      if (donationAmount < 5) {
-        alert('Minimum donation amount is $5');
-        return;
-      }
-      
-      if (!/^\d{16}$/.test(cardNumber)) {
-        alert('Please enter a valid 16-digit card number');
-        return;
-      }
-      
-      if (!/^\d{2}\/\d{2}$/.test(expiry)) {
-        alert('Please enter expiry date in MM/YY format');
-        return;
-      }
-      
-      if (!/^\d{3,4}$/.test(cvc)) {
-        alert('Please enter a valid CVC (3 or 4 digits)');
-        return;
-      }
-      
       // Simulate successful donation
       alert(`Thank you for your donation of $${donationAmount}! A confirmation has been sent to your email.`);
       donationForm.reset();
