@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOUSE OF PAWS - Rescuing Dogs, Restoring Hope</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="description" content="House of Paws - Rescuing dogs and restoring hope. Donate to help abandoned and abused dogs find loving homes.">
+  <meta property="og:title" content="HOUSE OF PAWS - Rescuing Dogs, Restoring Hope">
+  <meta property="og:description" content="Your donation can save a life. Together, we can give abandoned and abused dogs the love and care they deserve.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb">
+  <meta property="og:url" content="https://houseofpaws.example.com">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -75,7 +82,8 @@
       color: var(--dark);
       font-size: 0.9rem;
     }
-/* Hamburger Menu */
+    
+    /* Hamburger Menu */
     .hamburger {
       display: none;
       cursor: pointer;
@@ -102,7 +110,11 @@
       top: 0px;
     }
     
-    .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+    .hamburger span:nth-child(2) {
+      top: 10px;
+    }
+    
+    .hamburger span:nth-child(3) {
       top: 10px;
     }
     
@@ -158,7 +170,7 @@
     
     /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('@9.jpg') no-repeat center center/cover;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb') no-repeat center center/cover;
       color: white;
       text-align: center;
       padding: 180px 0 100px;
@@ -750,7 +762,11 @@
       }
       
       .hero h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+      }
+      
+      .hero p {
+        font-size: 0.9rem;
       }
       
       .hero-buttons {
@@ -798,10 +814,11 @@
         <p>Rescuing Dogs, Restoring Hope</p>
       </div>
       <div class="hamburger" id="hamburger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <!-- Navigation Menu -->
       <nav id="nav-menu">
         <a href="index.html">Home</a>
@@ -851,22 +868,22 @@
       <div class="gallery-container">
         <div class="gallery-carousel">
           <div class="gallery-item">
-            <img src="14.jpg" alt="Rescued dog 1">
+            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d" alt="Rescued dog 1">
           </div>
           <div class="gallery-item">
-            <img src="@10.jpg">
+            <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b" alt="Rescued dog 2">
           </div>
           <div class="gallery-item">
-            <img src="@11.jpg" alt="Rescued dog 3">
+            <img src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80" alt="Rescued dog 3">
           </div>
           <div class="gallery-item">
-            <img src="@13.jpg" alt="Rescued dog 4">
+            <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2" alt="Rescued dog 4">
           </div>
           <div class="gallery-item">
-            <img src="@15.jpg" alt="Rescued dog 5">
+            <img src="https://images.unsplash.com/photo-1588943211346-0908a1fb0b01" alt="Rescued dog 5">
           </div>
           <div class="gallery-item">
-            <img src="@16.jpg" alt="Rescued dog 6">
+            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb" alt="Rescued dog 6">
           </div>
         </div>
       </div>
@@ -894,8 +911,7 @@
         <div class="option" data-amount="100">
           <h3>$100</h3>
           <p>Funds a rescue operation</p>
-          <i class="fas 
-            " style="font-size: 2rem; color: var(--accent); margin: 15px 0;"></i>
+          <i class="fas fa-ambulance" style="font-size: 2rem; color: var(--accent); margin: 15px 0;"></i>
         </div>
         <div class="option" data-amount="custom">
           <h3>Custom</h3>
@@ -914,93 +930,11 @@
         </div>
         <div class="progress-controls" style="margin-top: 15px;">
           <button id="update-progress" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Update Progress</button>
-          <input type="number" id="new-amount" placeholder="New amount" style="padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-left: 10px; width: 100px;">
+          <input type="password" id="admin-password" placeholder="Admin Password" style="padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-left: 10px; width: 120px; display: none;">
+          <input type="number" id="new-amount" placeholder="New amount" style="padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-left: 10px; width: 100px; display: none;">
         </div>
       </div>
       
-      <!-- In your Donate section, replace the progress controls with this: -->
-<div class="progress-controls" style="margin-top: 15px;">
-  <button id="update-progress" class="btn" style="padding: 8px 15px; font-size: 0.9rem;">Update Progress</button>
-  <input type="password" id="admin-password" placeholder="Admin Password" style="padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-left: 10px; width: 120px; display: none;">
-  <input type="number" id="new-amount" placeholder="New amount" style="padding: 8px; border: 1px solid #ddd; border-radius: 5px; margin-left: 10px; width: 100px; display: none;">
-</div>
-
-<!-- Add this modal at the bottom of your body (before scripts): -->
-<div id="password-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
-  <div style="background-color: white; padding: 30px; border-radius: 10px; max-width: 400px; text-align: center;">
-    <h3>Admin Verification</h3>
-    <p>Enter admin password to update progress:</p>
-    <input type="password" id="modal-password" style="padding: 10px; width: 100%; margin: 15px 0; border: 1px solid #ddd; border-radius: 5px;">
-    <div style="display: flex; gap: 15px; justify-content: center;">
-      <button id="cancel-password" class="btn" style="background-color: var(--dark);">Cancel</button>
-      <button id="submit-password" class="btn">Verify</button>
-    </div>
-    <p id="password-error" style="color: var(--primary); margin-top: 15px; display: none;">Incorrect password. Please try again.</p>
-  </div>
-</div>
-
-<script>
-// Add this to your existing JavaScript (replace the updateProgressBtn event listener)
-const ADMIN_PASSWORD = "charlie256"; // Change this to your desired password
-
-document.getElementById('update-progress').addEventListener('click', () => {
-  document.getElementById('password-modal').style.display = 'flex';
-});
-
-document.getElementById('cancel-password').addEventListener('click', () => {
-  document.getElementById('password-modal').style.display = 'none';
-  document.getElementById('modal-password').value = '';
-  document.getElementById('password-error').style.display = 'none';
-});
-
-document.getElementById('submit-password').addEventListener('click', () => {
-  const enteredPassword = document.getElementById('modal-password').value;
-  if (enteredPassword === ADMIN_PASSWORD) {
-    document.getElementById('password-modal').style.display = 'none';
-    document.getElementById('modal-password').value = '';
-    document.getElementById('password-error').style.display = 'none';
-    
-    // Show the update controls
-    document.getElementById('admin-password').style.display = 'inline-block';
-    document.getElementById('new-amount').style.display = 'inline-block';
-    document.getElementById('update-progress').textContent = 'Submit Update';
-    
-    // Store verification for this session
-    sessionStorage.setItem('progressAuth', 'true');
-  } else {
-    document.getElementById('password-error').style.display = 'block';
-  }
-});
-
-// Modified update functionality
-const updateProgressBtn = document.getElementById('update-progress');
-const newAmountInput = document.getElementById('new-amount');
-const adminPasswordInput = document.getElementById('admin-password');
-
-updateProgressBtn.addEventListener('click', function() {
-  if (sessionStorage.getItem('progressAuth') === 'true') {
-    const newAmount = parseFloat(newAmountInput.value) || 0;
-    const currentPassword = adminPasswordInput.value;
-    
-    if (currentPassword === ADMIN_PASSWORD && newAmount > 0) {
-      currentAmount = newAmount;
-      raisedAmount.textContent = currentAmount.toLocaleString();
-      const progressPercent = (currentAmount / goalAmount) * 100;
-      progressBar.style.width = `${progressPercent}%`;
-      newAmountInput.value = '';
-      adminPasswordInput.value = '';
-      
-      // Hide the controls again after update
-      adminPasswordInput.style.display = 'none';
-      newAmountInput.style.display = 'none';
-      updateProgressBtn.textContent = 'Update Progress';
-      sessionStorage.removeItem('progressAuth');
-    } else if (currentPassword !== ADMIN_PASSWORD) {
-      alert('Admin password required to update');
-    }
-  }
-});
-</script>
       <!-- Donation Form -->
       <div class="donation-form" id="credit-card-form">
         <h3>Credit Card Donation</h3>
@@ -1018,8 +952,9 @@ updateProgressBtn.addEventListener('click', function() {
             <input type="email" id="email" name="email" required>
           </div>
           <div class="form-group">
-            <label for="card">Card Number</label>
-            <input type="text" id="card" name="card" required>
+            <label for="card" id="card-label">Card Number</label>
+            <input type="text" id="card" name="card" required aria-labelledby="card-label" aria-describedby="card-help">
+            <small id="card-help" style="display: block; margin-top: 5px; color: #666;">16 digits on your card</small>
           </div>
           <div class="form-group" style="display: flex; gap: 15px;">
             <div style="flex: 1;">
@@ -1101,22 +1036,22 @@ updateProgressBtn.addEventListener('click', function() {
       
       <div class="story-carousel">
         <div class="story">
-          <img src="@16.jpg" alt="Max's Story">
+          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb" alt="Jazz's Story">
           <h3>Jazz's Story</h3>
           <p>Found malnourished and scared, Jazz is now the happiest pup with his new family in Seattle.</p>
-          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin: 15px 0;"
+          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin: 15px 0;">Read Full Story</a>
         </div>
         <div class="story">
-          <img src="@8.jpg" alt="Luna's Journey">
+          <img src="https://images.unsplash.com/photo-1561037404-61cd46aa615b" alt="Luna's Journey">
           <h3>Luna's Journey</h3>
           <p>Abandoned in a garbage fill, Luna now brings joy to a family with three loving children.</p>
-          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin: 15px 0;"
+          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin: 15px 0;">Read Full Story</a>
         </div>
         <div class="story">
-          <img src="@13.jpg" alt="Luna's Recovery">
+          <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2" alt="Rocki's Recovery">
           <h3>Rocki's Recovery</h3>
           <p>Severely injured when we found him, Rocki made a full recovery and found his forever home.</p>
-          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin: 15px 0;"
+          <a href="#" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin: 15px 0;">Read Full Story</a>
         </div>
       </div>
     </div>
@@ -1190,8 +1125,6 @@ updateProgressBtn.addEventListener('click', function() {
 
   <script>
     // Mobile Menu Toggle
-    
-     // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
     
@@ -1218,35 +1151,83 @@ updateProgressBtn.addEventListener('click', function() {
         header.classList.remove('scrolled');
       }
     });
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
     
-    // Progress bar functionality
+    // Progress bar functionality with password protection
+    const ADMIN_PASSWORD = "charlie256";
     const progressBar = document.getElementById('progress-bar');
     const raisedAmount = document.getElementById('raised-amount');
     const updateProgressBtn = document.getElementById('update-progress');
     const newAmountInput = document.getElementById('new-amount');
+    const adminPasswordInput = document.getElementById('admin-password');
+    const passwordModal = document.getElementById('password-modal');
+    const modalPassword = document.getElementById('modal-password');
+    const cancelPassword = document.getElementById('cancel-password');
+    const submitPassword = document.getElementById('submit-password');
+    const passwordError = document.getElementById('password-error');
     
     // Initialize with current amount
     let currentAmount = 1251;
     const goalAmount = 100000;
     
+    // Password modal handling
     updateProgressBtn.addEventListener('click', () => {
-      const newAmount = parseFloat(newAmountInput.value) || 0;
-      if (newAmount > 0) {
-        currentAmount = newAmount;
-        raisedAmount.textContent = currentAmount.toLocaleString();
-        const progressPercent = (currentAmount / goalAmount) * 100;
-        progressBar.style.width = `${progressPercent}%`;
-        newAmountInput.value = '';
-        alert(`Progress updated to $${currentAmount.toLocaleString()}`);
+      if (sessionStorage.getItem('progressAuth') === 'true') {
+        // Already authenticated - show update controls
+        adminPasswordInput.style.display = 'inline-block';
+        newAmountInput.style.display = 'inline-block';
+        updateProgressBtn.textContent = 'Submit Update';
+      } else {
+        // Show password modal
+        passwordModal.style.display = 'flex';
+      }
+    });
+    
+    cancelPassword.addEventListener('click', () => {
+      passwordModal.style.display = 'none';
+      modalPassword.value = '';
+      passwordError.style.display = 'none';
+    });
+    
+    submitPassword.addEventListener('click', () => {
+      if (modalPassword.value === ADMIN_PASSWORD) {
+        passwordModal.style.display = 'none';
+        modalPassword.value = '';
+        passwordError.style.display = 'none';
+        
+        // Show update controls
+        adminPasswordInput.style.display = 'inline-block';
+        newAmountInput.style.display = 'inline-block';
+        updateProgressBtn.textContent = 'Submit Update';
+        
+        // Store verification for this session
+        sessionStorage.setItem('progressAuth', 'true');
+      } else {
+        passwordError.style.display = 'block';
+      }
+    });
+    
+    // Update progress functionality
+    updateProgressBtn.addEventListener('click', function() {
+      if (sessionStorage.getItem('progressAuth') === 'true') {
+        const newAmount = parseFloat(newAmountInput.value) || 0;
+        const currentPassword = adminPasswordInput.value;
+        
+        if (currentPassword === ADMIN_PASSWORD && newAmount > 0) {
+          currentAmount = newAmount;
+          raisedAmount.textContent = currentAmount.toLocaleString();
+          const progressPercent = (currentAmount / goalAmount) * 100;
+          progressBar.style.width = `${progressPercent}%`;
+          newAmountInput.value = '';
+          adminPasswordInput.value = '';
+          
+          // Hide the controls again after update
+          adminPasswordInput.style.display = 'none';
+          newAmountInput.style.display = 'none';
+          updateProgressBtn.textContent = 'Update Progress';
+          sessionStorage.removeItem('progressAuth');
+        } else if (currentPassword !== ADMIN_PASSWORD) {
+          alert('Admin password required to update');
+        }
       }
     });
     
@@ -1329,28 +1310,53 @@ updateProgressBtn.addEventListener('click', function() {
     // Copy crypto address
     const copyBtns = document.querySelectorAll('.copy-btn');
     copyBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', async () => {
         const address = btn.dataset.address;
-        navigator.clipboard.writeText(address).then(() => {
+        try {
+          await navigator.clipboard.writeText(address);
           btn.textContent = 'Copied!';
           setTimeout(() => {
             btn.textContent = 'Copy Address';
           }, 2000);
-        });
+        } catch (err) {
+          console.error('Failed to copy:', err);
+          alert('Could not copy address. Please copy manually.');
+        }
       });
     });
     
-    // Form submission
+    // Form submission with validation
     const donationForm = document.getElementById('donation-form');
     donationForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      
+      // Validate form
       const donationAmount = parseFloat(document.getElementById('amount').value) || 0;
+      const cardNumber = document.getElementById('card').value.replace(/\s/g, '');
+      const expiry = document.getElementById('expiry').value;
+      const cvc = document.getElementById('cvc').value;
       
       if (donationAmount < 5) {
         alert('Minimum donation amount is $5');
         return;
       }
       
+      if (!/^\d{16}$/.test(cardNumber)) {
+        alert('Please enter a valid 16-digit card number');
+        return;
+      }
+      
+      if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+        alert('Please enter expiry date in MM/YY format');
+        return;
+      }
+      
+      if (!/^\d{3,4}$/.test(cvc)) {
+        alert('Please enter a valid CVC (3 or 4 digits)');
+        return;
+      }
+      
+      // Simulate successful donation
       alert(`Thank you for your donation of $${donationAmount}! A confirmation has been sent to your email.`);
       donationForm.reset();
       creditCardForm.classList.remove('active');
