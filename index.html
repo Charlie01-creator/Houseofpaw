@@ -1022,7 +1022,7 @@
           <i class="fab fa-bitcoin"></i> Donate via Crypto
         </a>
         <a href="#" class="btn" id="credit-card-btn" style="background-color: var(--dark);">
-          <i class="fas fa-credit-card"></i> Credit Card
+          <i class="fas fa-credit-card"></i> Donate via Credit Card
         </a>
       </div>
     </div>
@@ -1265,33 +1265,47 @@
       });
     });
     
-    // Payment method toggle
-    const creditCardBtn = document.getElementById('credit-card-btn');
-    const cryptoBtn = document.getElementById('crypto-btn');
-    const creditCardForm = document.getElementById('credit-card-form');
-    const cryptoDonation = document.getElementById('crypto-donation');
-    const cancelDonation = document.getElementById('cancel-donation');
-    const cancelCrypto = document.getElementById('cancel-crypto');
     
-    creditCardBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      creditCardForm.classList.add('active');
-      cryptoDonation.classList.remove('active');
-    });
+    // Payment method toggle - Modified version
+const creditCardBtn = document.getElementById('credit-card-btn');
+const cryptoBtn = document.getElementById('crypto-btn');
+const creditCardForm = document.getElementById('credit-card-form');
+const cryptoDonation = document.getElementById('crypto-donation');
+const cancelDonation = document.getElementById('cancel-donation');
+const cancelCrypto = document.getElementById('cancel-crypto');
+
+creditCardBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  creditCardForm.classList.add('active');
+  cryptoDonation.classList.remove('active');
+  
+  // Scroll to the form for better UX
+  creditCardForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+cryptoBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  cryptoDonation.classList.add('active');
+  creditCardForm.classList.remove('active');
+  
+  // Scroll to the crypto section for better UX
+  cryptoDonation.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+cancelDonation.addEventListener('click', (e) => {
+  e.preventDefault();
+  creditCardForm.classList.remove('active');
+});
+
+cancelCrypto.addEventListener('click', (e) => {
+  e.preventDefault();
+  cryptoDonation.classList.remove('active');
+});
     
-    cryptoBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      cryptoDonation.classList.add('active');
-      creditCardForm.classList.remove('active');
-    });
     
-    cancelDonation.addEventListener('click', () => {
-      creditCardForm.classList.remove('active');
-    });
     
-    cancelCrypto.addEventListener('click', () => {
-      cryptoDonation.classList.remove('active');
-    });
     
     // Crypto option selection
     const cryptoOptions = document.querySelectorAll('.crypto-option');
