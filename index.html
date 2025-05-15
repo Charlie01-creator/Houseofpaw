@@ -414,21 +414,11 @@
 }
 
 /* Form Visibility */
-.donation-form, .crypto-donation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  visibility: hidden;
+  .donation-form, .crypto-donation {
+  display: none;
+  margin: 30px auto;
   transition: all 0.3s ease;
-}
-
-.donation-form.active, .crypto-donation.active {
-  opacity: 1;
-  visibility: visible;
-  position: relative;
-}
+}  
     /* Donation Form */
     .donation-form {
       background-color: white;
@@ -1048,18 +1038,17 @@
       </div>
       
       <div class="payment-methods">
-  <a href="https://www.paypal.me/Saveme2667" class="btn" style="background-color: #003087;">
+  <a href="https://www.paypal.me/Saveme2667" class="btn" id="paypal-btn" style="background-color: #003087;">
     <i class="fab fa-paypal"></i> Donate via PayPal
   </a>
-  <button class="btn payment-method-btn" id="crypto-btn" style="background-color: #8247e5;">
+  <button class="btn" id="crypto-btn" style="background-color: #8247e5;">
     <i class="fab fa-bitcoin"></i> Donate via Crypto
   </button>
-  <button class="btn payment-method-btn active" id="credit-card-btn" style="background-color: var(--dark);">
+  <button class="btn active" id="credit-card-btn" style="background-color: var(--dark);">
     <i class="fas fa-credit-card"></i> Donate via Credit Card
   </button>
 </div>
-      </div>
-    </div>
+
   </section>
 
   <!-- Success Stories -->
@@ -1299,54 +1288,51 @@
       });
     });
     
-    // Payment method toggle - New version
+    // Payment method toggle
 const creditCardBtn = document.getElementById('credit-card-btn');
 const cryptoBtn = document.getElementById('crypto-btn');
+const paypalBtn = document.getElementById('paypal-btn');
 const creditCardForm = document.getElementById('credit-card-form');
 const cryptoDonation = document.getElementById('crypto-donation');
-const paymentMethodBtns = document.querySelectorAll('.payment-method-btn');
 
-function showCreditCardForm() {
-  // Update button states
-  paymentMethodBtns.forEach(btn => btn.classList.remove('active'));
-  creditCardBtn.classList.add('active');
-  
-  // Show credit card form, hide crypto
-  creditCardForm.classList.add('active');
-  cryptoDonation.classList.remove('active');
+function resetPaymentButtons() {
+    creditCardBtn.classList.remove('active');
+    cryptoBtn.classList.remove('active');
+    paypalBtn.classList.remove('active');
 }
 
-function showCryptoDonation() {
-  // Update button states
-  paymentMethodBtns.forEach(btn => btn.classList.remove('active'));
-  cryptoBtn.classList.add('active');
-  
-  // Show crypto options, hide credit card
-  cryptoDonation.classList.add('active');
-  creditCardForm.classList.remove('active');
+function showPaymentMethod(method) {
+    // Hide all forms first
+    creditCardForm.style.display = 'none';
+    cryptoDonation.style.display = 'none';
+    
+    // Reset all buttons
+    resetPaymentButtons();
+    
+    // Activate the selected method
+    switch(method) {
+        case 'credit-card':
+            creditCardBtn.classList.add('active');
+            creditCardForm.style.display = 'block';
+            break;
+        case 'crypto':
+            cryptoBtn.classList.add('active');
+            cryptoDonation.style.display = 'block';
+            break;
+        case 'paypal':
+            paypalBtn.classList.add('active');
+            // PayPal redirects, no form to show
+            break;
+    }
 }
 
 // Event listeners
-creditCardBtn.addEventListener('click', showCreditCardForm);
-cryptoBtn.addEventListener('click', showCryptoDonation);
+creditCardBtn.addEventListener('click', () => showPaymentMethod('credit-card'));
+cryptoBtn.addEventListener('click', () => showPaymentMethod('crypto'));
+paypalBtn.addEventListener('click', () => showPaymentMethod('paypal'));
 
 // Initialize with credit card form visible
-showCreditCardForm();
-
-// Keep your existing cancel buttons functionality
-document.getElementById('cancel-donation').addEventListener('click', (e) => {
-  e.preventDefault();
-  // Optional: You might want to hide both forms when canceled
-  creditCardForm.classList.remove('active');
-  cryptoDonation.classList.remove('active');
-});
-
-document.getElementById('cancel-crypto').addEventListener('click', (e) => {
-  e.preventDefault();
-  // Optional: You might want to hide both forms when canceled
-  creditCardForm.classList.remove('active');
-  cryptoDonation.classList.remove('active');
-});
+showPaymentMethod('credit-card');
     
     
     
